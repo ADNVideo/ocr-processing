@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS_OCR=  -W `pkg-config --cflags --libs opencv`  -Iinclude -lswscale -lavdevice -lavformat -lavcodec -lavutil -lswresample -lz -lconfig++ -ltesseract `xml2-config --cflags --libs` -w 
 
-PROGS_tess:= tess-ocr-detector generate-mask tracking-tess-ocr-detector lia_liblex.o charset.o manage_capital.o run_lif_cleanocr 
+PROGS_tess:= tess-ocr-detector generate-mask tracking-tess-ocr-detector lia_liblex.o charset.o manage_capital.o ocr-filter
 # run_lif_cleanocr
 
 all:  $(PROGS_tess) 
@@ -23,9 +23,9 @@ OPTION=-Iinclude
 
 
 
-run_lif_cleanocr: src/run_lif_cleanocr.c src/charset.o src/lia_liblex.o src/manage_capital.o
-	gcc -Iinclude -o bin/run_lif_cleanocr src/run_lif_cleanocr.c src/charset.o src/lia_liblex.o src/manage_capital.o
-	src/make-bundle bin/run_lif_cleanocr  bin/run_lif_cleanocr.bundle
+ocr-filter: src/ocr-filter.c src/charset.o src/lia_liblex.o src/manage_capital.o
+	gcc -Iinclude -o bin/ocr-filter src/ocr-filter.c src/charset.o src/lia_liblex.o src/manage_capital.o
+	src/make-bundle bin/ocr-filter  bin/ocr-filter.bundle
 
 lia_liblex.o: src/lia_liblex.c 
 	gcc  -Iinclude -c src/lia_liblex.c -o src/lia_liblex.o
