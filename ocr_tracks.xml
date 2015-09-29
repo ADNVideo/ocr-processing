@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <box>
+    <timeStart>0.08</timeStart>
+    <timeEnd>0.08</timeEnd>
+    <ratioX>704</ratioX>
+    <ratioY>396</ratioY>
+    <positionX>102</positionX>
+    <positionY>309</positionY>
+    <width>140</width>
+    <height>22</height>
+    <confidence>0.81</confidence>
+    <ocr>DANIEL RIOLO</ocr>
+  </box>
+  <box>
+    <timeStart>0.08</timeStart>
+    <timeEnd>0.08</timeEnd>
+    <ratioX>704</ratioX>
+    <ratioY>396</ratioY>
+    <positionX>101</positionX>
+    <positionY>331</positionY>
+    <width>240</width>
+    <height>16</height>
+    <confidence>0.73</confidence>
+    <ocr>CONSULTANT rl'IDTEAll RMC SPIJRT</ocr>
+  </box>
+</root>

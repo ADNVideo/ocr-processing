@@ -1,0 +1,17 @@
+q   o
+o   q
+u   ll
+ll  u
+i   l
+l   i
+e   l
+l   e
+i   e
+e   i
+u   li
+li  u
+u   le
+d   o
+o   d
+v   y
+y   v
