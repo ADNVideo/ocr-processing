@@ -23,7 +23,7 @@ OPTION=-Iinclude
 
 
 
-ocr-filter: src/ocr-filter.c src/charset.o src/lia_liblex.o src/manage_capital.o
+ocr-filter: src/ocr-filter.c charset.o lia_liblex.o manage_capital.o
 	gcc -Iinclude -o bin/ocr-filter src/ocr-filter.c src/charset.o src/lia_liblex.o src/manage_capital.o
 	src/make-bundle bin/ocr-filter  bin/ocr-filter.bundle
 

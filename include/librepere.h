@@ -110,7 +110,8 @@ struct RepereExtractKeyframe {
         ctx->img_convert_ctx = sws_getContext( ctx->w_, ctx->h_, ctx->codecctx->pix_fmt, ctx->w_, ctx->h_, PIX_FMT_RGB24, SWS_BICUBIC, NULL, NULL, NULL);
         return 1;
     }
-
+    
+    	
     static int cmp(const void *pi1, const void *pi2, void* data)
     {
         int i1 = *(const int *)pi1;
@@ -119,6 +120,9 @@ struct RepereExtractKeyframe {
         return ctx->local_index[i1].byte < ctx->local_index[i2].byte ? -1 : ctx->local_index[i1].byte > ctx->local_index[i2].byte ? 1 : 0;
     }
 
+    static int cmp_mac(void* data, const void *p1, const void *p2){
+   	cmp(p1, p2, data);
+    }
     static int load_index(repere_video* ctx, const char *fname)
     {
         int *ii;
@@ -177,8 +181,12 @@ struct RepereExtractKeyframe {
         ii = (int*) malloc(ctx->local_index_size * sizeof(int));
         for(i=0; i<ctx->local_index_size; i++)
             ii[i] = i;
-        qsort_r(ii, ctx->local_index_size, sizeof(int), cmp, ctx);
-        for(i=1; i<ctx->local_index_size; i++)
+        #ifdef __APPLE__
+                qsort_r(ii, ctx->local_index_size, sizeof(int), ctx, &cmp_mac);
+	#else
+		qsort_r(ii, ctx->local_index_size, sizeof(int), cmp, ctx);
+        #endif
+	for(i=1; i<ctx->local_index_size; i++)
             ctx->local_index[ii[i]].previous_frame = ii[i-1];
         free(ii);
         return 1;
