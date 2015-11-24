@@ -213,9 +213,9 @@ int main(int argc, char **argv) {
 					if (nb <=3) {t=0.5;}
 					if (ok ==0) {t=1;}
 					if (nbin>=((double)nb)*(double)t) // more than coeff% in vocab 
-						printf("<ocrFiltered>%s<ocrFiltered>\n",chfilt);
+						printf("<ocrFiltered><![CDATA[%s]]></ocrFiltered>\n",chfilt);
 					else
-						printf("<ocrFiltered>REJECTED<ocrFiltered>\n");
+						printf("<ocrFiltered>REJECTED</ocrFiltered>\n");
 			}
 		}
 		fclose(f);
